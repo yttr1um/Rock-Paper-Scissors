@@ -1,6 +1,6 @@
 //global variables
-const humanScore = 0;
-const computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 
 const choices = ['rock', 'paper', 'scissors'];
 
@@ -15,17 +15,56 @@ function getHumanChoice() {
 
     //check if choice is part of the choices
     //returns the choice in lowercase to make it case insensitive
-    return (choices.includes(choice.toLowerCase())) ? choice.toLowerCase() : "invalid input";
+    return (choices.includes(choice.toLowerCase())) ? choice.toLowerCase() : underfined;
 }
 
-console.log(getComputerChoice());
-console.log(getHumanChoice());
+function playRound(humanChoice, computerChoice) {
 
-// function playRound(humanChoice, computerChoice) {
-//     //conditions
-// }
+    //the game logic
+    if (humanChoice == 'rock') {
+        if (computerChoice == 'paper') {
+            console.log("paper beats rock")
+            computerScore++;
+        } if (computerChoice == 'scissors') {
+            console.log('rock beats scissors');
+            humanScore++;
+        }
+    }
 
-// const humanSelection = getHumanChoice();
-// const computerSelection = getComputerChoice();
+    if (humanChoice == 'paper') {
+        if (computerChoice == 'rock') {
+            console.log('paper beats rock');
+            humanScore++;
+        } if (computerChoice == 'scissors') {
+            console.log('scissors beats paper');
+            computerScore++;
+        }
+    }
 
-// playRound(humanSelection, computerSelection);
+    if (humanChoice == 'scissors') {
+        if (computerChoice == 'rock') {
+            console.log('rock beats scissors')
+            computerScore++;
+        } if (computerChoice == 'paper') {
+            console.log('scissors beats paper');
+            humanScore++;
+        }
+    }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
+//Announce the winner
+if (humanScore>computerScore) {
+    console.log("You are the winner");
+} else if (humanScore<computerScore) {
+    console.log("The computer has won");
+} else {
+    console.log("It's a tie"); //It's a tie
+}
+
+console.log(humanSelection);
+console.log(computerSelection);
