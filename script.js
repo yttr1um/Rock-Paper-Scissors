@@ -52,10 +52,18 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+//make it 3 rounds
 
-playRound(humanSelection, computerSelection);
+for (let i = 1; i<=3; i++) {
+
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+
+    console.log(`Your choice: ${humanSelection}`);
+    console.log(`Computer's choice: ${computerSelection}`);
+
+    playRound(humanSelection, computerSelection);
+}
 
 //Announce the winner
 if (humanScore>computerScore) {
@@ -65,6 +73,3 @@ if (humanScore>computerScore) {
 } else {
     console.log("It's a tie"); //It's a tie
 }
-
-console.log(humanSelection);
-console.log(computerSelection);
